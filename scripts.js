@@ -25,7 +25,7 @@ cells.forEach((cell) => {
         target = cell.textContent;
         slot = cell.id;
 
-        if (target == '' && win == false) {
+        if (target == '' && !win) {
             if (player == '1') {
                 cell.textContent = 'X';
             } else if (player == '2') {
@@ -35,13 +35,16 @@ cells.forEach((cell) => {
             updateSlot(slot, player);
             updateHeader(player);
             checkWin(player);
-            boardFull();
-            
+
             if (player == '1') {
                 player = '2';
             } else {
                 player = '1';
             }
+        }
+
+        if (!win) {
+            boardFull();
         }
   });
 });
